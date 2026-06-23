@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CampusRelay | Micro-Logistics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>CampusRelay</h1>
+        <div class="user-wallet">Wallet: RM <span id="wallet-balance">15.00</span></div>
+    </header>
+
+    <main id="app-container">
+        
+        <section id="job-board-view" class="view-section active">
+            <h2>Available Deliveries</h2>
+            <div id="feed-container">
+                <p class="loading-text">Fetching campus jobs...</p>
+            </div>
+        </section>
+
+        <section id="post-job-view" class="view-section hidden">
+            <h2>Request a Runner</h2>
+            <form id="post-job-form">
+                </form>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <button id="nav-board" class="nav-btn active">Job Board</button>
+        <button id="nav-post" class="nav-btn">Post Job</button>
+    </nav>
+
+    <footer class="app-footer">
+        <small>Developed by Yunus Said Khaidum | CampusRelay</small>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
