@@ -72,8 +72,8 @@ include 'php/header.php';
         <div class="form-group">
             <label for="role">I am a...</label>
             <select id="role" name="role" required style="padding: 0.75rem; border-radius: 4px; border: 1px solid #ccc;">
-                <option value="customer">Student (Ordering items)</option>
-                <option value="runner">Runner (Delivering items)</option>
+                <option value="customer">Student (Renting vehicles)</option>
+                <option value="technician">Technician (Managing returns)</option>
             </select>
         </div>
         <button type="submit" class="btn">Register</button>

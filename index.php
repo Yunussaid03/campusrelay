@@ -2,7 +2,7 @@
 session_start();
 // If the user is already logged in, redirect them to their dashboard
 if (isset($_SESSION['user_id'])) {
-    $redirect = ($_SESSION['role'] === 'customer') ? 'customer_dashboard.php' : 'runner_dashboard.php';
+    $redirect = ($_SESSION['role'] === 'customer') ? 'customer_dashboard.php' : 'technician_dashboard.php';
     header("Location: $redirect");
     exit;
 }

@@ -196,12 +196,197 @@ body {
     color: #2c3e50;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 
 .category-divider {
     border: 0;
-    height: 2px;
-    background: #3498db;
+    height: 3px;
+    background: #1abc9c;
     width: 60px;
     margin-bottom: 1.5rem;
+    border-radius: 2px;
+}
+
+/* Dashboard Tabs Navigation */
+.dashboard-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    color: #2c3e50;
+    background-color: #f0f3f4;
+}
+
+.tab-btn.active {
+    color: #1abc9c;
+    background-color: #e8f8f5;
+    border-bottom: 3px solid #1abc9c;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Tab Contents visibility toggle */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Vehicle and Rental Cards */
+.vehicle-card {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    border-color: #1abc9c;
+}
+
+.rate-unit {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-weight: normal;
+}
+
+/* Buttons */
+.btn-rent {
+    background-color: #1abc9c;
+}
+
+.btn-rent:hover {
+    background-color: #16a085;
+}
+
+/* Active Technician Dashboard Cards */
+.order-card {
+    border-left: 4px solid #f39c12;
+    background-color: #fffdf9;
+}
+
+.active-rental-card {
+    border-left: 4px solid #3498db;
+    background-color: #f7fbff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.order-header .time {
+    font-size: 0.85rem;
+    color: #95a5a6;
+}
+
+.btn-accept {
+    background-color: #f39c12;
+}
+
+.btn-accept:hover {
+    background-color: #d35400;
+}
+
+.btn-complete {
+    background-color: #2ecc71;
+}
+
+.btn-complete:hover {
+    background-color: #27ae60;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.status-reserved {
+    background-color: #ffeaa7;
+    color: #d35400;
+}
+
+.status-returned {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-available {
+    background-color: #d1f2eb;
+    color: #16a085;
+}
+
+/* Table styling for rentals summary */
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+.rentals-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+.rentals-table th, .rentals-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.rentals-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+}
+
+.rentals-table tr:hover {
+    background-color: #f8fafc;
+}
+
+.waiting {
+    color: #e67e22;
+    font-style: italic;
 }
