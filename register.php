@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
-    $role = $_POST['role'];
+    $role = 'customer'; // Default student/member role for P2P
 
     // Basic validation
-    if (empty($name) || empty($email) || empty($password) || empty($role)) {
+    if (empty($name) || empty($email) || empty($password)) {
         $error = "Please fill in all fields.";
     } else {
         // Hash the password for security
@@ -51,10 +51,10 @@ include 'php/header.php';
     <h2>Create an Account</h2>
     
     <?php if ($error): ?>
-        <p style="color: red; text-align: center; margin-bottom: 1rem;"><?php echo $error; ?></p>
+        <p style="color: red; text-align: center; margin-bottom: 1rem;"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
     <?php if ($success): ?>
-        <p style="color: green; text-align: center; margin-bottom: 1rem;"><?php echo $success; ?></p>
+        <p style="color: green; text-align: center; margin-bottom: 1rem;"><?php echo htmlspecialchars($success); ?></p>
     <?php endif; ?>
 
     <form action="register.php" method="POST" class="auth-form">
@@ -62,24 +62,37 @@ include 'php/header.php';
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required>
         </div>
+        
         <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
         </div>
+        
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <div class="form-group">
-            <label for="role">I am a...</label>
-            <select id="role" name="role" required style="padding: 0.75rem; border-radius: 4px; border: 1px solid #ccc;">
-                <option value="customer">Student (Renting vehicles)</option>
-                <option value="technician">Technician (Managing returns)</option>
-            </select>
+        
+        <!-- Show Password Checkbox -->
+        <div class="form-group" style="flex-direction: row; align-items: center; gap: 0.5rem; margin-top: -0.5rem; margin-bottom: 1.25rem;">
+            <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()" style="width: auto; cursor: pointer;">
+            <label for="show-password" style="margin-bottom: 0; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; user-select: none;">Show Password</label>
         </div>
+
         <button type="submit" class="btn">Register</button>
         <p class="auth-link">Already have an account? <a href="index.php">Login here</a>.</p>
     </form>
 </div>
+
+<script>
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+</script>
 
 <?php include 'php/footer.php'; ?>

@@ -18,14 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
 
-        // Redirect based on role
-        if ($user['role'] === 'customer') {
-            header("Location: ../renter_dashboard.php");
-        } else if ($user['role'] === 'technician') {
-            header("Location: ../technician_dashboard.php");
-        } else {
-            header("Location: ../index.php");
-        }
+        // Redirect to renter marketplace dashboard
+        header("Location: ../renter_dashboard.php");
         exit;
     } else {
         // Login failed. Redirect back to login with an error message (using URL parameters for simplicity)
