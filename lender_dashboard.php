@@ -293,6 +293,7 @@ include 'php/header.php';
                                 <option value="Bicycles">Bicycles</option>
                                 <option value="Skateboards">Skateboards</option>
                                 <option value="Motorcycles">Motorcycles</option>
+                                <option value="Cars">Cars</option>
                                 <option value="Accessories">Accessories</option>
                             </select>
                         </div>
@@ -301,9 +302,25 @@ include 'php/header.php';
                             <label for="location">Parking Spot / Location</label>
                             <select id="location" name="location" required>
                                 <option value="B1">B1</option>
-                                <option value="D1-D6">D1-D6</option>
-                                <option value="LY1-LY8">LY1-LY8</option>
-                                <option value="A1-A5">A1-A5</option>
+                                <option value="D1">D1</option>
+                                <option value="D2">D2</option>
+                                <option value="D3">D3</option>
+                                <option value="D4">D4</option>
+                                <option value="D5">D5</option>
+                                <option value="D6">D6</option>
+                                <option value="LY1">LY1</option>
+                                <option value="LY2">LY2</option>
+                                <option value="LY3">LY3</option>
+                                <option value="LY4">LY4</option>
+                                <option value="LY5">LY5</option>
+                                <option value="LY6">LY6</option>
+                                <option value="LY7">LY7</option>
+                                <option value="LY8">LY8</option>
+                                <option value="A1">A1</option>
+                                <option value="A2">A2</option>
+                                <option value="A3">A3</option>
+                                <option value="A4">A4</option>
+                                <option value="A5">A5</option>
                             </select>
                         </div>
                     </div>

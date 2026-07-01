@@ -367,6 +367,8 @@ body {
     display: flex;
     flex-direction: column;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    height: auto;
+    min-height: 100%;
 }
 
 .item-card:hover {
@@ -389,6 +391,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    flex-shrink: 0;
 }
 
 .item-card h3 {
@@ -423,6 +426,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 .qty-group {
