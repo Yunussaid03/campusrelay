@@ -2,7 +2,7 @@
 session_start();
 require 'db_connect.php';
 
-// Ensure the user is a logged-in renter submitting a POST request
+// Ensure the user is a logged-in customer (renter) submitting a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id']) && $_SESSION['role'] === 'customer') {
     
     $renter_id = $_SESSION['user_id'];
@@ -35,18 +35,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id']) && $_SE
         $pdo->beginTransaction();
 
         // 1. Verify that the vehicle is available for rent
-        $stmtCheck = $pdo->prepare("SELECT availability_status FROM vehicles WHERE vehicle_id = :vehicle_id FOR UPDATE");
+        $stmtCheck = $pdo->prepare("SELECT owner_id, availability_status FROM vehicles WHERE vehicle_id = :vehicle_id FOR UPDATE");
         $stmtCheck->execute([':vehicle_id' => $vehicle_id]);
         $vehicle = $stmtCheck->fetch(PDO::FETCH_ASSOC);
 
-        if (!$vehicle || $vehicle['availability_status'] !== 'available') {
+        if (!$vehicle) {
+            throw new Exception("Vehicle not found.");
+        }
+
+        if ($vehicle['owner_id'] == $renter_id) {
+            throw new Exception("You cannot rent your own vehicle.");
+        }
+
+        if ($vehicle['availability_status'] !== 'available') {
             throw new Exception("The selected vehicle is currently not available for rent.");
         }
 
-        // 2. Create the main rental record with status 'active'
+        // 2. Create the main rental record with status 'pending' (Awaiting Lender approval)
         $stmtRental = $pdo->prepare("
             INSERT INTO rentals (renter_id, vehicle_id, rental_start, rental_end, total_cost, status) 
-            VALUES (:renter_id, :vehicle_id, :rental_start, :rental_end, :total_cost, 'active')
+            VALUES (:renter_id, :vehicle_id, :rental_start, :rental_end, :total_cost, 'pending')
         ");
         $stmtRental->execute([
             ':renter_id' => $renter_id,
@@ -56,19 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id']) && $_SE
             ':total_cost' => $total_cost
         ]);
 
-        // 3. Update the vehicle availability_status to 'reserved'
-        $stmtVehicle = $pdo->prepare("UPDATE vehicles SET availability_status = 'reserved' WHERE vehicle_id = :vehicle_id");
-        $stmtVehicle->execute([':vehicle_id' => $vehicle_id]);
-
         $pdo->commit();
-        header("Location: ../renter_dashboard.php?success=Rental reservation completed successfully!");
+        header("Location: ../renter_dashboard.php?success=Rental request submitted successfully! Awaiting owner approval.");
         exit;
 
     } catch (Exception $e) {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }
-        header("Location: ../renter_dashboard.php?error=Failed to process rental. " . urlencode($e->getMessage()));
+        header("Location: ../renter_dashboard.php?error=Failed to submit request. " . urlencode($e->getMessage()));
         exit;
     }
 } else {

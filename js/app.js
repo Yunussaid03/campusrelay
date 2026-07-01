@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (diffHours > 0) {
                         const total = (basePrice * diffHours).toFixed(2);
-                        submitBtn.textContent = `Rent Now ($${total})`;
+                        submitBtn.textContent = `Request Rental (RM ${total})`;
                         submitBtn.disabled = false;
                         submitBtn.style.opacity = '1';
                     } else {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitBtn.style.opacity = '0.6';
                     }
                 } else {
-                    submitBtn.textContent = `Rent Now`;
+                    submitBtn.textContent = `Request Rental`;
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
                 }

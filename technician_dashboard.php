@@ -123,7 +123,7 @@ include 'php/header.php';
                                 <p style="margin-bottom: 0.5rem;"><strong>Renter:</strong> <?php echo htmlspecialchars($rental['renter_name']); ?></p>
                                 <p style="margin-bottom: 0.5rem;"><strong>Vehicle:</strong> <?php echo htmlspecialchars($rental['vehicle_name']); ?></p>
                                 <p style="margin-bottom: 1.25rem;"><strong>Duration:</strong> <?php echo $hours; ?> hr<?php echo $hours > 1 ? 's' : ''; ?></p>
-                                <p class="price" style="margin-bottom: 1.5rem;">Payout: $<?php echo number_format($rental['total_cost'] * 0.15, 2); ?> <br><small style="font-size: 0.75rem; color: var(--text-muted);">(15% Tech Commission)</small></p>
+                                <p class="price" style="margin-bottom: 1.5rem;">Payout: RM <?php echo number_format($rental['total_cost'] * 0.15, 2); ?> <br><small style="font-size: 0.75rem; color: var(--text-muted);">(15% Tech Commission)</small></p>
                                 
                                 <form action="php/accept_rental.php" method="POST" style="margin-top: auto;">
                                     <input type="hidden" name="rental_id" value="<?php echo $rental['rental_id']; ?>">
@@ -160,7 +160,7 @@ include 'php/header.php';
                                 <p style="margin-bottom: 0.5rem;"><strong>Renter:</strong> <?php echo htmlspecialchars($rental['renter_name']); ?></p>
                                 <p style="margin-bottom: 0.5rem;"><strong>Vehicle:</strong> <?php echo htmlspecialchars($rental['vehicle_name']); ?></p>
                                 <p style="margin-bottom: 0.5rem;"><strong>Duration:</strong> <?php echo $hours; ?> hr<?php echo $hours > 1 ? 's' : ''; ?></p>
-                                <p class="price" style="margin-bottom: 1.5rem;"><strong>Cost:</strong> $<?php echo number_format($rental['total_cost'], 2); ?></p>
+                                <p class="price" style="margin-bottom: 1.5rem;"><strong>Cost:</strong> RM <?php echo number_format($rental['total_cost'], 2); ?></p>
                                 
                                 <form action="php/complete_rental.php" method="POST" style="margin-top: auto; display: flex; flex-direction: column; gap: 0.5rem;">
                                     <input type="hidden" name="rental_id" value="<?php echo $rental['rental_id']; ?>">
@@ -202,7 +202,7 @@ include 'php/header.php';
                                     <td><strong><?php echo htmlspecialchars($rental['vehicle_name']); ?></strong></td>
                                     <td><?php echo date('M d, Y h:i A', strtotime($rental['rental_start'])); ?></td>
                                     <td><?php echo date('M d, Y h:i A', strtotime($rental['rental_end'])); ?></td>
-                                    <td>$<?php echo number_format($rental['total_cost'] * 0.15, 2); ?></td>
+                                    <td>RM <?php echo number_format($rental['total_cost'] * 0.15, 2); ?></td>
                                     <td><span class="status-badge status-returned">Returned</span></td>
                                 </tr>
                             <?php endforeach; ?>
