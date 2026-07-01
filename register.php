@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$body_class = 'auth-page';
 include 'php/header.php'; 
 ?>
 

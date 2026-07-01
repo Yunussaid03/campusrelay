@@ -527,14 +527,14 @@ body {
     color: #d97706;
 }
 
-.status-returned {
+.status-returned, .status-available {
     background-color: #d1fae5;
     color: #065f46;
 }
 
-.status-available {
-    background-color: #e0f2fe;
-    color: #0369a1;
+.status-in_use, .status-inuse {
+    background-color: #fee2e2;
+    color: #991b1b;
 }
 
 /* Tab Navigation Wrapper */
@@ -631,6 +631,36 @@ body {
     background-color: #fee2e2;
     color: #991b1b;
     border: 1.5px solid #fca5a5;
+}
+
+/* Absolute Centering for Authentication Pages */
+body.auth-page {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    background-color: var(--background-gray) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body.auth-page .main-header {
+    display: none !important;
+}
+
+body.auth-page .main-footer {
+    display: none !important;
+}
+
+body.auth-page .container {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
 }
 
 /* --- Mobile Responsiveness for App Layout --- */

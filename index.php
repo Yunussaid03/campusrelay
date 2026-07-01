@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Include the header
+$body_class = 'auth-page';
 include 'php/header.php'; 
 ?>
 

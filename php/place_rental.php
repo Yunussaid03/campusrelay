@@ -7,17 +7,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id']) && $_SE
     
     $renter_id = $_SESSION['user_id'];
     $vehicle_id = (int)$_POST['vehicle_id'];
-    $duration_hours = (int)$_POST['quantity'];
     $price_per_hour = (float)$_POST['price'];
     
-    // Calculate total cost
-    $total_cost = $price_per_hour * $duration_hours;
+    // Parse scheduled dates from datetime-local input
+    if (empty($_POST['rental_start']) || empty($_POST['rental_end'])) {
+        header("Location: ../renter_dashboard.php?error=" . urlencode("Start and end times are required."));
+        exit;
+    }
+
+    $rental_start = date('Y-m-d H:i:s', strtotime($_POST['rental_start']));
+    $rental_end = date('Y-m-d H:i:s', strtotime($_POST['rental_end']));
     
-    // Calculate start and end times
-    $rental_start = date('Y-m-d H:i:s');
-    $rental_end = date('Y-m-d H:i:s', strtotime("+$duration_hours hours"));
+    // Calculate duration in hours
+    $start_ts = strtotime($rental_start);
+    $end_ts = strtotime($rental_end);
+    $diff_seconds = $end_ts - $start_ts;
+    $duration_hours = ceil($diff_seconds / 3600); // round up to nearest hour
 
     try {
+        if ($duration_hours <= 0) {
+            throw new Exception("Rental return time must be set after the start time.");
+        }
+
+        // Calculate total cost
+        $total_cost = $price_per_hour * $duration_hours;
+
         $pdo->beginTransaction();
 
         // 1. Verify that the vehicle is available for rent
