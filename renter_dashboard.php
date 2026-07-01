@@ -3,7 +3,7 @@ session_start();
 require 'php/db_connect.php';
 
 // Protect the page
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
+if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
 }

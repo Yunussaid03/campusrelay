@@ -75,6 +75,13 @@ include 'php/header.php';
             <button class="menu-item" onclick="switchTab('active-tab')">My Active Tasks (<?php echo count($active_rentals); ?>)</button>
             <button class="menu-item" onclick="switchTab('completed-tab')">Completed Returns (<?php echo count($completed_rentals); ?>)</button>
             <button class="menu-item" onclick="switchTab('settings-tab')">Account Settings</button>
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 0.5rem 0;">
+            <a href="renter_dashboard.php" class="menu-item" style="text-decoration: none; display: block; color: var(--heritage-gold); font-weight: bold; border-left: none;">
+                Switch to Renting &rarr;
+            </a>
+            <a href="lender_dashboard.php" class="menu-item" style="text-decoration: none; display: block; color: var(--heritage-gold); font-weight: bold; border-left: none;">
+                Switch to Lending &rarr;
+            </a>
         </nav>
         <div class="sidebar-footer">
             <div class="user-info">
