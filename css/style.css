@@ -10,9 +10,9 @@
     --text-muted: #64748b;
     --success-green: #10b981;
     --danger-red: #ef4444;
-    --card-shadow: 0 10px 30px rgba(0, 51, 102, 0.05);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     --border-radius-sm: 8px;
-    --border-radius-md: 14px;
+    --border-radius-md: 16px;
     --border-radius-lg: 20px;
 }
 
@@ -25,7 +25,9 @@
 }
 
 body {
-    background-color: var(--background-gray);
+    background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7)), 
+                url('../assets/images/xiamen.png') no-repeat center center fixed;
+    background-size: cover;
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
@@ -187,17 +189,16 @@ body {
     min-height: calc(100vh - 58px); /* Height minus sticky header */
 }
 
-/* Sidebar Styling (XMUM Branding) */
 .app-sidebar {
     width: 270px;
-    background-color: var(--primary-blue);
+    background: rgba(0, 51, 102, 0.75);
     color: white;
     display: flex;
     flex-direction: column;
     padding: 2.25rem 1.25rem;
     flex-shrink: 0;
-    border-right: 4.5px solid var(--heritage-gold);
-    box-shadow: 4px 0 15px rgba(0, 51, 102, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-brand h3 {
@@ -285,6 +286,8 @@ body {
     padding: 2.5rem 3.5rem;
     overflow-y: auto;
     min-width: 0;
+    background: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .content-header {
@@ -297,7 +300,7 @@ body {
 }
 
 .content-header h2 {
-    color: var(--primary-blue);
+    color: #ffffff;
     font-weight: 700;
     font-size: 1.7rem;
 }
@@ -319,7 +322,7 @@ body {
 }
 
 .category-title {
-    color: var(--primary-blue);
+    color: #ffffff;
     font-size: 1.35rem;
     margin-bottom: 0.4rem;
     font-weight: 700;
@@ -357,15 +360,15 @@ body {
 
 /* Card Redesign & Glassmorphism */
 .item-card {
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 51, 102, 0.08);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 51, 102, 0.09);
     border-radius: var(--border-radius-md);
-    box-shadow: 0 8px 32px 0 rgba(0, 51, 102, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     height: auto;
     min-height: 100%;
@@ -373,9 +376,9 @@ body {
 
 .item-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.09);
-    border-color: rgba(212, 175, 55, 0.4);
-    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    border-color: rgba(212, 175, 55, 0.55);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .vehicle-image {
@@ -569,22 +572,22 @@ body {
 }
 
 .rentals-table th {
-    background-color: rgba(0, 51, 102, 0.03);
+    background-color: rgba(0, 51, 102, 0.05);
     color: var(--primary-blue);
     font-weight: 700;
     padding: 1.1rem;
-    border-bottom: 2px solid rgba(0, 51, 102, 0.08);
+    border-bottom: 2px solid rgba(0, 51, 102, 0.1);
 }
 
 .rentals-table td {
     padding: 1.1rem;
     border-bottom: 1px solid rgba(0, 51, 102, 0.05);
-    color: #334155;
-    background-color: white;
+    color: var(--text-dark);
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 .rentals-table tr:hover td {
-    background-color: #f8fafc;
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 .waiting {
@@ -595,12 +598,14 @@ body {
 
 /* Settings Card Styles */
 .settings-card {
-    background: white;
-    border: 1px solid rgba(0, 51, 102, 0.08);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 51, 102, 0.09);
     border-radius: var(--border-radius-md);
     padding: 2rem;
     max-width: 500px;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 10px 40px rgba(0, 51, 102, 0.06);
 }
 
 .settings-card p {
@@ -730,4 +735,263 @@ body.auth-page .container {
     .content-header h2 {
         font-size: 1.4rem;
     }
+}
+
+/* Escrow Wallet Card Summary */
+.wallet-box {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 51, 102, 0.08);
+    border-radius: var(--border-radius-sm);
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 320px;
+}
+
+.wallet-balance-val {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--primary-blue);
+}
+
+/* Chat Modal Styles */
+.modal-chat {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 51, 102, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 1050;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    height: 80vh;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3.5px solid var(--heritage-gold);
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.btn-close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    background-color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.chat-message-bubble {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.chat-message-bubble.sent {
+    background-color: var(--primary-blue);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-message-bubble.received {
+    background-color: #e2e8f0;
+    color: var(--text-dark);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.msg-sender-name {
+    font-weight: bold;
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.sent .msg-sender-name {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.received .msg-sender-name {
+    color: var(--primary-blue);
+}
+
+.chat-input-form {
+    padding: 1rem;
+    background-color: white;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input-form input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.chat-input-form input:focus {
+    border-color: var(--primary-blue);
+}
+
+.btn-send-msg {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0 1.25rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-send-msg:hover {
+    background-color: var(--secondary-blue);
+}
+
+/* Return Checklist Forms & Inspection Uploads styling */
+.checklist-form-container {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 51, 102, 0.08);
+    border-radius: var(--border-radius-sm);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.checklist-form-container textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    resize: vertical;
+    margin-bottom: 0.5rem;
+    outline: none;
+}
+
+.checklist-form-container textarea:focus {
+    border-color: var(--primary-blue);
+}
+
+/* Review Forms Style */
+.rating-group {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.rating-star-btn {
+    font-size: 1.5rem;
+    color: #cbd5e1;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.rating-star-btn.selected, .rating-star-btn:hover {
+    color: var(--heritage-gold);
+}
+
+/* Custom Overrides for Filter Bars and Input dropdowns in Glassmorphic Dashboards */
+.filter-bar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 51, 102, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-dark) !important;
+}
+
+.filter-bar label, 
+.filter-bar select {
+    color: var(--primary-blue) !important;
+}
+
+.filter-bar select option {
+    background-color: white;
+    color: var(--text-dark);
+}
+
+.checklist-form-container {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 51, 102, 0.08) !important;
+    border-radius: 12px;
+}
+
+.checklist-form-container textarea {
+    background-color: white !important;
+    color: var(--text-dark) !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* Wallet Card Glassmorphism override */
+.wallet-box {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(0, 51, 102, 0.08) !important;
+    border-radius: var(--border-radius-sm);
+}
+
+.wallet-balance-val {
+    color: var(--primary-blue) !important;
+}
+
+/* Form Group overrides on glass background */
+.settings-card select, 
+.settings-card input, 
+.settings-card textarea {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+}
+
+/* Leaflet control contrast */
+.leaflet-popup-content-wrapper, 
+.leaflet-popup-tip {
+    background: rgba(0, 51, 102, 0.9);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }

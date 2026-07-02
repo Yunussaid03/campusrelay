@@ -81,6 +81,13 @@ include 'php/header.php';
 
         <button type="submit" class="btn">Register</button>
         <p class="auth-link">Already have an account? <a href="index.php">Login here</a>.</p>
+        
+        <!-- Authorship & Copyright Statement -->
+        <div style="margin-top: 1.5rem; text-align: center; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid #cbd5e1; padding-top: 0.75rem; line-height: 1.4;">
+            <p style="margin: 0; font-weight: bold;">Developed by: Yunus Said (Student Authorship Statement)</p>
+            <p style="margin: 0;">Published: June 2026 | Last Edited: July 2, 2026</p>
+            <p style="margin: 0; font-size: 0.65rem; color: #94a3b8; margin-top: 0.25rem;">Images sourced from open academic repositories.</p>
+        </div>
     </form>
 </div>
 
